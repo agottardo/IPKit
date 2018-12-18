@@ -10,25 +10,40 @@ import XCTest
 @testable import IPKit
 
 class IPKitTests: XCTestCase {
+    
+    var response : IPResponse?
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        IPAPI.shared.fetch { (response, error) in
+            self.response = response
+            if error != nil {
+                XCTFail("Network/parsing failure")
+            }
         }
+        sleep(UInt32(IPAPI.shared.timeout))
+    }
+    
+    func testValueExists() {
+        XCTAssert(response != nil, "Response should not be nil")
+    }
+    
+    func testIPFormat() {
+        XCTAssert(response?.ip != nil, "The IP should not be nil")
+        XCTAssert((response?.ip?.count)! >= 7, "The IP should contain at least seven characters.")
+    }
+    
+    func testLocationNotNil() {
+        XCTAssert(response?.location != nil, "The location should not be nil")
+    }
+    
+    func testDefaultTimeout() {
+        XCTAssert(IPAPI.shared.timeout == 10)
+    }
+    
+    func testSetTimeout() {
+        IPAPI.shared.setTimeout(seconds: 2)
+        XCTAssert(IPAPI.shared.timeout == 2)
     }
 
 }

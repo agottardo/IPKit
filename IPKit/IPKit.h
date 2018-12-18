@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double IPKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char IPKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <IPKit/PublicHeader.h>
-
-

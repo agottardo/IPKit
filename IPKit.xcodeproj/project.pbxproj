@@ -10,6 +10,10 @@
 		40D9A60821C98FA100A6AB27 /* IPKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D9A5FE21C98FA100A6AB27 /* IPKit.framework */; };
 		40D9A60D21C98FA100A6AB27 /* IPKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9A60C21C98FA100A6AB27 /* IPKitTests.swift */; };
 		40D9A60F21C98FA100A6AB27 /* IPKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 40D9A60121C98FA100A6AB27 /* IPKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		40D9A61921C98FBD00A6AB27 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9A61821C98FBD00A6AB27 /* Singleton.swift */; };
+		40D9A61A21C98FBF00A6AB27 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9A61821C98FBD00A6AB27 /* Singleton.swift */; };
+		40D9A61D21C98FFB00A6AB27 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9A61C21C98FFB00A6AB27 /* Structs.swift */; };
+		40D9A61E21C9900000A6AB27 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9A61C21C98FFB00A6AB27 /* Structs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +33,8 @@
 		40D9A60721C98FA100A6AB27 /* IPKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IPKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D9A60C21C98FA100A6AB27 /* IPKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPKitTests.swift; sourceTree = "<group>"; };
 		40D9A60E21C98FA100A6AB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40D9A61821C98FBD00A6AB27 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		40D9A61C21C98FFB00A6AB27 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +77,10 @@
 		40D9A60021C98FA100A6AB27 /* IPKit */ = {
 			isa = PBXGroup;
 			children = (
+				40D9A61B21C98FF200A6AB27 /* Model */,
 				40D9A60121C98FA100A6AB27 /* IPKit.h */,
 				40D9A60221C98FA100A6AB27 /* Info.plist */,
+				40D9A61821C98FBD00A6AB27 /* Singleton.swift */,
 			);
 			path = IPKit;
 			sourceTree = "<group>";
@@ -84,6 +92,14 @@
 				40D9A60E21C98FA100A6AB27 /* Info.plist */,
 			);
 			path = IPKitTests;
+			sourceTree = "<group>";
+		};
+		40D9A61B21C98FF200A6AB27 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				40D9A61C21C98FFB00A6AB27 /* Structs.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +164,7 @@
 				TargetAttributes = {
 					40D9A5FD21C98FA100A6AB27 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					40D9A60621C98FA100A6AB27 = {
 						CreatedOnToolsVersion = 10.1;
@@ -194,6 +211,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40D9A61D21C98FFB00A6AB27 /* Structs.swift in Sources */,
+				40D9A61921C98FBD00A6AB27 /* Singleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +221,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				40D9A60D21C98FA100A6AB27 /* IPKitTests.swift in Sources */,
+				40D9A61E21C9900000A6AB27 /* Structs.swift in Sources */,
+				40D9A61A21C98FBF00A6AB27 /* Singleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +362,7 @@
 		40D9A61321C98FA100A6AB27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +380,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.gottardo.IPKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +389,7 @@
 		40D9A61421C98FA100A6AB27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +415,7 @@
 		40D9A61621C98FA100A6AB27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZM2TBP23P7;
 				INFOPLIST_FILE = IPKitTests/Info.plist;
@@ -409,6 +434,7 @@
 		40D9A61721C98FA100A6AB27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZM2TBP23P7;
 				INFOPLIST_FILE = IPKitTests/Info.plist;
