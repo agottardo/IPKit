@@ -1,5 +1,6 @@
-#  IPKit
-IPKit is an easy-to-use, async framework for iOS/macOS that lets you interface seamlessly with `ipapi.co`, a service to obtain your IP address and some useful data related to it. With IPKit, you can go from this...
+# 🌍 IPKit
+
+IPKit is an easy-to-use framework for iOS/macOS that lets you interface seamlessly with `ipapi.co`, a commonly used service to obtain your IP address and some useful data related to it. With IPKit, you can go from this...
 
 ```shell
 curl https://ipapi.co/8.8.8.8/json/
