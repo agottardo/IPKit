@@ -9,12 +9,21 @@
 import Foundation
 import CoreLocation
 
+/**
+ A response returned by the ipapi.co API.
+ */
 struct IPResponse {
+    /// The IP address of the device.
     var ip : String?
+    /// Geographical data derived from the IP address.
     var location : IPLocation?
+    /// Information about the Autonomous System the IP belongs to.
     var asn : IPASNumber?
 }
 
+/**
+ Contains the geographical data derived from an IP address.
+ */
 struct IPLocation {
     var city : String?
     var region : String?
