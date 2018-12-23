@@ -14,6 +14,7 @@
 		40D9A61A21C98FBF00A6AB27 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9A61821C98FBD00A6AB27 /* Singleton.swift */; };
 		40D9A61D21C98FFB00A6AB27 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9A61C21C98FFB00A6AB27 /* Structs.swift */; };
 		40D9A61E21C9900000A6AB27 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9A61C21C98FFB00A6AB27 /* Structs.swift */; };
+		40FB1C1121D0412500E0442B /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 40FB1C1021D0412500E0442B /* .travis.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		40D9A60E21C98FA100A6AB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40D9A61821C98FBD00A6AB27 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		40D9A61C21C98FFB00A6AB27 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		40FB1C1021D0412500E0442B /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		40D9A5F421C98FA100A6AB27 = {
 			isa = PBXGroup;
 			children = (
+				40FB1C1021D0412500E0442B /* .travis.yml */,
 				4099A3BD21C9B6A2009FB14D /* README.md */,
 				40D9A60021C98FA100A6AB27 /* IPKit */,
 				40D9A60B21C98FA100A6AB27 /* IPKitTests */,
@@ -196,6 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40FB1C1121D0412500E0442B /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
