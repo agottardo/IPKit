@@ -33,14 +33,23 @@ struct IPLocation {
     var continentCode : String?
     var postalCode : String?
     var coordinates : CLLocationCoordinate2D?
-    var timeZone : TimeZone?
     var countryCallingCode : String?
     var currency : String?
     var languages : [String]?
     var isInEuropeanUnion : Bool?
 }
 
+/**
+ Represents the Autonomous System information associated
+ with an IP address.
+ */
 struct IPASNumber {
     var asNumber : String?
     var organizationName : String?
+}
+
+/// An error returned by the API.
+enum IPKitError : Error {
+    /// Thrown when `fetch` is called with an invalid name.
+    case InvalidNameProvided
 }
