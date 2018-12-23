@@ -1,5 +1,7 @@
 # 🌍 IPKit
 
+<img src="https://api.travis-ci.org/agottardo/IPKit.svg?branch=master" alt="Travis Status" /> ![GitHub](https://img.shields.io/github/license/agottardo/IPKit.svg) ![GitHub release](https://img.shields.io/github/release/agottardo/IPKit/all.svg)
+
 IPKit is an easy-to-use framework for iOS/macOS that lets you interface seamlessly with `ipapi.co`, a commonly used service to obtain your IP address and some useful data related to it. With IPKit, you can go from this...
 
 ```shell
