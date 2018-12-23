@@ -45,7 +45,7 @@ class IPAPI {
      - Parameter completion: completion handler.
      */
     func fetch(forIP: String, completion: @escaping (_ response: IPResponse?, _ error: Error?) -> ()) {
-        if !verifyHostname(hostname: forIP) {
+        if !isValidIP(addr: forIP) {
             completion(nil, IPKitError.InvalidNameProvided)
             return
         }
@@ -117,21 +117,29 @@ class IPAPI {
     // - MARK: Error handling
     
     /**
-    Returns whether the entered hostname is a valid IP address
-    or domain name.
+    Returns whether `addr` is a valid IP address.
     */
-    private func verifyHostname(hostname: String) -> Bool {
+    private func isValidIP(addr: String) -> Bool {
         
-        let ipRegex = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
-        let hostnameRegex = "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$"
+        let octets = addr.split(separator: ".")
+        if octets.count != 4 {
+            return false
+        }
         
-        if (hostname.range(of: ipRegex, options: .regularExpression) != nil) {
-            return true
+        for octet in octets {
+            if octet.count > 3 || octet.count < 1 {
+                return false
+            }
+            let asInt = Int(octet)
+            if asInt == nil {
+                return false
+            }
+            if asInt! < 0 || asInt! > 255 {
+                return false
+            }
         }
-        if (hostname.range(of: hostnameRegex, options: .regularExpression) != nil) {
-            return true
-        }
-        return false
+        
+        return true
 
     }
     
