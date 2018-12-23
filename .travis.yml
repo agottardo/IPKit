@@ -1,4 +1,4 @@
 language: objective-c
 xcode_project: IPKit.xcodeproj # path to your xcodeproj folder
 xcode_scheme: IPKitTests
-xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
+xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
