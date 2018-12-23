@@ -1,4 +1,3 @@
 language: objective-c
-xcode_project: IPKit.xcodeproj # path to your xcodeproj folder
-xcode_scheme: IPKitTests
-xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
+osx_image: xcode10
+script: xcodebuild clean build -project IPKit.xcodeproj -scheme IPKitTests -destination "platform=iOS Simulator,name=iPhone X,OS=12.0" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
