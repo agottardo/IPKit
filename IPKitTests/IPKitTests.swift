@@ -11,39 +11,37 @@ import XCTest
 
 class IPKitTests: XCTestCase {
     
-    var response : IPResponse?
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        IPAPI.shared.fetch { (response, error) in
-            self.response = response
-            if error != nil {
-                XCTFail("Network/parsing failure")
-            }
-        }
-        sleep(UInt32(IPAPI.shared.timeout))
-    }
-    
-    func testValueExists() {
-        XCTAssert(response != nil, "Response should not be nil")
-    }
-    
-    func testIPFormat() {
-        XCTAssert(response?.ip != nil, "The IP should not be nil")
-        XCTAssert((response?.ip?.count)! >= 7, "The IP should contain at least seven characters.")
-    }
-    
-    func testLocationNotNil() {
-        XCTAssert(response?.location != nil, "The location should not be nil")
-    }
-    
     func testDefaultTimeout() {
-        XCTAssert(IPAPI.shared.timeout == 10)
+        XCTAssert(IPAPI.shared.timeout == 10, "The default timeout should be 10 seconds.")
     }
     
     func testSetTimeout() {
-        IPAPI.shared.setTimeout(seconds: 2)
-        XCTAssert(IPAPI.shared.timeout == 2)
+        IPAPI.shared.setTimeout(seconds: 5)
+        XCTAssert(IPAPI.shared.timeout == 5, "The timeout should be set to 5 seconds after calling setTimeout()")
+    }
+    
+    func testSimpleFetch() {
+        let expect = expectation(description: "it should fetch the current IP")
+        IPAPI.shared.fetch { (response, error) in
+            if error != nil {
+                XCTFail("Network/parsing failure")
+            }
+            XCTAssert(response != nil, "Response should not be nil")
+            XCTAssert(response?.ip != nil, "The IP should not be nil")
+            XCTAssert((response?.ip?.count)! >= 7, "The IP should contain at least seven characters.")
+            XCTAssert(response?.location != nil, "The location should not be nil")
+            if response != nil && error == nil {
+                expect.fulfill()
+            }
+        }
+        waitForExpectations(timeout: IPAPI.shared.timeout) { error in
+            if error != nil {
+                XCTFail("It didn't fulfill.")
+            }
+            
+        }
+        
+
     }
 
 }
