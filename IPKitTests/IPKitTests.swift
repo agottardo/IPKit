@@ -43,35 +43,34 @@ class IPKitTests: XCTestCase {
     }
     
     func testInvalidIPs() {
-        let expect0 = expectation(description: "it should not work with an invalid IP")
-        IPAPI.shared.fetch(forIP: "-1.255.255.255") { (response, error) in
-            if response == nil && error != nil {
-                expect0.fulfill()
+        
+        let badIPs  = ["-1.255.255.255", "256.256.256.256", "a.b.c.d", "....", "0.a", "1.1.1", "...", ".....", ""]
+        let goodIPs = ["192.168.0.1", "0.0.0.0", "255.255.255.255", "1.1.1.1"]
+        
+        for ip in badIPs {
+            let expect = expectation(description: "it should not work with IP:" + ip)
+            IPAPI.shared.fetch(forIP: ip) { (response, error) in
+                if response == nil && error != nil {
+                    expect.fulfill()
+                }
             }
         }
-        let expect1 = expectation(description: "it should not work with an invalid IP")
-        IPAPI.shared.fetch(forIP: "256.256.256.256") { (response, error) in
-            if response == nil && error != nil {
-                expect1.fulfill()
+        
+        for ip in goodIPs {
+            let expect = expectation(description: "it should work with IP: " + ip)
+            IPAPI.shared.fetch(forIP: ip) { (response, error) in
+                if response != nil && error == nil {
+                    expect.fulfill()
+                }
             }
         }
-        let expect2 = expectation(description: "it should work with a valid IP containing a single zero")
-        IPAPI.shared.fetch(forIP: "192.168.0.1") { (response, error) in
-            if response != nil && error == nil {
-                expect2.fulfill()
-            }
-        }
-        let expect3 = expectation(description: "it should work with a valid IP containing only zeros")
-        IPAPI.shared.fetch(forIP: "0.0.0.0") { (response, error) in
-            if response != nil && error == nil {
-                expect3.fulfill()
-            }
-        }
+        
         waitForExpectations(timeout: IPAPI.shared.timeout) { error in
             if error != nil {
                 XCTFail("It didn't fulfill.")
             }
         }
+        
     }
 
 }
