@@ -130,11 +130,10 @@ class IPAPI {
             if octet.count > 3 || octet.count < 1 {
                 return false
             }
-            let asInt = Int(octet)
-            if asInt == nil {
+            guard let asInt = Int(octet) else {
                 return false
             }
-            if asInt! < 0 || asInt! > 255 {
+            if asInt < 0 || asInt > 255 {
                 return false
             }
         }
